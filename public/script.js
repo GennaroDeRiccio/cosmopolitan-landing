@@ -68,9 +68,10 @@ function renderFeaturedMenu() {
 const categoryStrip = document.querySelector("#categoryStrip");
 const menuList = document.querySelector("#menuList");
 const menuSearch = document.querySelector("#menuSearch");
+const menuState = document.querySelector("#menuState");
 let allProducts = [];
 let allCategories = [];
-let activeCategory = "all";
+let activeCategory = "";
 
 function categoryName(code) {
   return allCategories.find((category) => category.tabe_cod === code)?.tabe_des || "Menu";
@@ -82,13 +83,10 @@ function productImage(item) {
 
 function renderCategoryStrip() {
   if (!categoryStrip) return;
-  const buttons = [
-    { code: "all", label: "Tutto" },
-    ...allCategories.map((category) => ({
-      code: category.tabe_cod,
-      label: `${category.tabe_des} (${category.articoli || 0})`
-    }))
-  ];
+  const buttons = allCategories.map((category) => ({
+    code: category.tabe_cod,
+    label: `${category.tabe_des} (${productsByCategory(category.tabe_cod).length})`
+  }));
 
   categoryStrip.innerHTML = buttons
     .map((category) => `
@@ -99,18 +97,31 @@ function renderCategoryStrip() {
     .join("");
 }
 
+function productsByCategory(code) {
+  return allProducts.filter((item) => item.art_tipo === code);
+}
+
 function renderFullMenu() {
   if (!menuList) return;
   const query = (menuSearch?.value || "").trim().toLowerCase();
-  const filtered = allProducts
-    .filter((item) => activeCategory === "all" || item.art_tipo === activeCategory)
+  const activeProducts = productsByCategory(activeCategory);
+  const filtered = activeProducts
     .filter((item) => {
       const text = `${item.art_descrizione1 || ""} ${item.art_componenti || ""} ${categoryName(item.art_tipo)}`.toLowerCase();
       return !query || text.includes(query);
     });
+  const activeName = categoryName(activeCategory);
+
+  if (menuState) {
+    const countLabel = filtered.length === 1 ? "1 prodotto" : `${filtered.length} prodotti`;
+    menuState.innerHTML = `
+      <strong>${activeName}</strong>
+      <span>${query ? `${countLabel} trovati` : countLabel}</span>
+    `;
+  }
 
   if (!filtered.length) {
-    menuList.innerHTML = '<p class="menu-loading">Nessun prodotto trovato.</p>';
+    menuList.innerHTML = `<p class="menu-loading">Nessun prodotto trovato in ${activeName}.</p>`;
     return;
   }
 
@@ -140,7 +151,8 @@ async function loadFullMenu() {
     imageManifest = imagesResponse.ok ? await imagesResponse.json() : {};
     if (!menuResponse.ok) throw new Error("Menu non disponibile");
     allProducts = data.articoli || [];
-    allCategories = data.tipi || [];
+    allCategories = (data.tipi || []).filter((category) => productsByCategory(category.tabe_cod).length > 0);
+    activeCategory = allCategories[0]?.tabe_cod || "";
     renderFeaturedMenu();
     renderCategoryStrip();
     renderFullMenu();
@@ -153,6 +165,7 @@ categoryStrip?.addEventListener("click", (event) => {
   const button = event.target.closest("button[data-category]");
   if (!button) return;
   activeCategory = button.dataset.category;
+  if (menuSearch) menuSearch.value = "";
   renderCategoryStrip();
   renderFullMenu();
 });

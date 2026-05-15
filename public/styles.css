@@ -441,7 +441,7 @@ h2 {
 .menu-tools {
   display: grid;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .category-strip {
@@ -473,6 +473,28 @@ h2 {
   border-color: var(--ink);
   background: var(--ink);
   color: #fff;
+}
+
+.menu-state {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.menu-state strong {
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.menu-state span {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 900;
 }
 
 .menu-list {
@@ -1034,6 +1056,11 @@ footer a {
 
   .special-grid {
     grid-template-columns: 1fr;
+  }
+
+  .menu-state {
+    display: grid;
+    gap: 4px;
   }
 
   .menu-item {
