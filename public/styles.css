@@ -145,8 +145,8 @@ p {
   display: grid;
   gap: 22px;
   width: 100%;
-  min-height: min(780px, calc(100svh - 59px));
-  padding: 28px 16px 190px;
+  min-height: calc(100svh - 59px);
+  padding: 28px 16px 104px;
   overflow: hidden;
   background: #050505;
   color: #fff;
@@ -182,8 +182,9 @@ p {
   display: grid;
   align-content: center;
   gap: 12px;
+  width: 100%;
   min-width: 0;
-  max-width: 680px;
+  max-width: 100%;
 }
 
 .hero-logo {
@@ -198,17 +199,19 @@ h1 {
   width: 100%;
   max-width: 100%;
   color: #fff;
-  font-size: clamp(43px, 16vw, 76px);
-  line-height: 0.86;
+  font-size: clamp(40px, 14.5vw, 62px);
+  line-height: 0.88;
   font-weight: 900;
   letter-spacing: 0;
   text-transform: uppercase;
   transform: none;
   transform-origin: left center;
+  overflow-wrap: anywhere;
 }
 
 h1 span {
   display: block;
+  max-width: 100%;
 }
 
 .hero-subtitle {
@@ -221,10 +224,12 @@ h1 span {
 
 .hero-script {
   color: #fff;
-  font-size: clamp(31px, 11vw, 46px);
+  font-size: clamp(29px, 9.6vw, 42px);
   font-weight: 900;
   line-height: 1.04;
   transform: rotate(-2deg);
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .hero-script strong {
@@ -241,11 +246,12 @@ p {
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
+  width: 100%;
 }
 
 .quick-actions {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 8px;
   width: 100%;
 }
@@ -278,7 +284,7 @@ p {
   height: 100%;
   min-height: 100%;
   object-fit: cover;
-  object-position: 63% center;
+  object-position: 57% center;
 }
 
 .tube-card {
@@ -939,6 +945,56 @@ footer a {
   background: var(--blue);
 }
 
+@media (max-width: 719px) {
+  .site-header {
+    gap: 8px;
+    padding: 10px 14px;
+  }
+
+  .hero-copy {
+    align-content: start;
+    padding-top: 96px;
+  }
+
+  .hero-logo {
+    width: 68px;
+    height: 68px;
+  }
+
+  h1 {
+    font-size: clamp(38px, 12.8vw, 56px);
+  }
+
+  .hero-script {
+    font-size: clamp(27px, 8.8vw, 38px);
+  }
+
+  .btn,
+  .header-cta {
+    min-height: 54px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
+
+  .quick-actions {
+    max-width: 100%;
+  }
+
+  .quick-actions a {
+    width: 100%;
+  }
+
+  .hero::after {
+    background:
+      linear-gradient(180deg, rgba(5, 5, 5, 0.82) 0%, rgba(5, 5, 5, 0.54) 42%, rgba(5, 5, 5, 0.88) 100%),
+      linear-gradient(90deg, rgba(5, 5, 5, 0.76), rgba(5, 5, 5, 0.36));
+  }
+
+  .hero-media img {
+    object-position: 57% center;
+  }
+}
+
 @media (max-width: 380px) {
   .brand span {
     max-width: 44vw;
@@ -955,12 +1011,16 @@ footer a {
     padding-left: 12px;
   }
 
+  .hero-copy {
+    padding-top: 88px;
+  }
+
   h1 {
-    font-size: clamp(38px, 15vw, 58px);
+    font-size: clamp(36px, 13.8vw, 52px);
   }
 
   .hero-script {
-    font-size: clamp(27px, 10vw, 40px);
+    font-size: clamp(25px, 9vw, 36px);
   }
 
   .quick-actions a {
