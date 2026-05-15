@@ -980,20 +980,26 @@ footer a {
 
   .hero-copy {
     align-content: start;
-    padding-top: 96px;
+    padding-top: 88px;
   }
 
   .hero-logo {
-    width: 68px;
-    height: 68px;
+    width: 62px;
+    height: 62px;
   }
 
   h1 {
-    font-size: clamp(38px, 12.8vw, 56px);
+    width: 138%;
+    max-width: none;
+    font-size: clamp(52px, 16.4vw, 76px);
+    transform: scaleX(0.72);
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .hero-script {
-    font-size: clamp(27px, 8.8vw, 38px);
+    max-width: 98%;
+    font-size: clamp(29px, 9vw, 40px);
   }
 
   .btn,
@@ -1004,11 +1010,20 @@ footer a {
   }
 
   .quick-actions {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     max-width: 100%;
+    gap: 6px;
   }
 
   .quick-actions a {
     width: 100%;
+    min-height: 44px;
+    padding: 0 6px;
+    border-color: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 11px;
+    backdrop-filter: blur(10px);
   }
 
   .hero::after {
@@ -1043,15 +1058,13 @@ footer a {
   }
 
   h1 {
-    font-size: clamp(36px, 13.8vw, 52px);
+    width: 142%;
+    font-size: clamp(47px, 15vw, 62px);
+    transform: scaleX(0.7);
   }
 
   .hero-script {
     font-size: clamp(25px, 9vw, 36px);
-  }
-
-  .quick-actions a {
-    font-size: 11px;
   }
 
   .special-grid {
