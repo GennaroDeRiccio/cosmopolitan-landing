@@ -77,6 +77,52 @@ function categoryName(code) {
   return allCategories.find((category) => category.tabe_cod === code)?.tabe_des || "Menu";
 }
 
+function normalizedCategoryName(category) {
+  return String(category?.tabe_des || "").trim().toLowerCase();
+}
+
+function categoryPriority(category) {
+  const name = normalizedCategoryName(category);
+
+  if (name.includes("antipasti mexicano")) return 10;
+  if (name === "antipasti") return 20;
+  if (name.includes("patate")) return 30;
+  if (name.includes("tacos")) return 40;
+  if (name.includes("burrito")) return 50;
+  if (name.includes("sushi")) return 60;
+  if (name.includes("gunkan")) return 70;
+  if (name.includes("nigiri")) return 80;
+  if (name.includes("ayce") && !name.includes("vegano") && !name.includes("vegetariano") && !name.includes("lattosio")) return 90;
+  if (name.includes("panini speciali")) return 200;
+  if (name === "panini") return 210;
+  if (name.includes("bocadillo")) return 220;
+  if (name.includes("brace")) return 230;
+  if (name.includes("poke da comporre")) return 240;
+  if (name.includes("poke")) return 250;
+  if (name.includes("vegano") || name.includes("vegetariano") || name.includes("lattosio")) return 260;
+  if (name.includes("box")) return 300;
+  if (name.includes("dolci")) return 400;
+  if (name.includes("bibite")) return 500;
+  if (name.includes("birre")) return 510;
+  if (name.includes("sangria")) return 520;
+  if (name.includes("vini")) return 530;
+  if (name.includes("analcolici")) return 540;
+  if (name.includes("alcolici")) return 550;
+  if (name.includes("caffetteria")) return 560;
+  if (name.includes("distillati")) return 570;
+  if (name.includes("grappe")) return 580;
+  if (name.includes("shottini")) return 590;
+  return 900;
+}
+
+function sortCategories(categories) {
+  return [...categories].sort((a, b) => {
+    const priority = categoryPriority(a) - categoryPriority(b);
+    if (priority !== 0) return priority;
+    return normalizedCategoryName(a).localeCompare(normalizedCategoryName(b), "it");
+  });
+}
+
 function productImage(item) {
   return productFileImage(item.art_altern, item.art_altern_update);
 }
@@ -151,7 +197,7 @@ async function loadFullMenu() {
     imageManifest = imagesResponse.ok ? await imagesResponse.json() : {};
     if (!menuResponse.ok) throw new Error("Menu non disponibile");
     allProducts = data.articoli || [];
-    allCategories = (data.tipi || []).filter((category) => productsByCategory(category.tabe_cod).length > 0);
+    allCategories = sortCategories((data.tipi || []).filter((category) => productsByCategory(category.tabe_cod).length > 0));
     activeCategory = allCategories[0]?.tabe_cod || "";
     renderFeaturedMenu();
     renderCategoryStrip();
