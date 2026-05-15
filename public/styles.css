@@ -25,10 +25,11 @@ body {
   width: 100%;
   max-width: 100%;
   margin: 0;
-  overflow-x: hidden;
+  overflow-x: clip;
   background: var(--bg);
   color: var(--ink);
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 a {
@@ -71,16 +72,27 @@ p {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  min-width: 0;
+  gap: 9px;
   font-weight: 900;
   text-transform: uppercase;
 }
 
 .brand img {
-  width: 42px;
-  height: 42px;
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.brand span {
+  overflow: hidden;
+  max-width: min(52vw, 260px);
+  font-size: 18px;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .desktop-nav {
@@ -133,8 +145,8 @@ p {
   display: grid;
   gap: 22px;
   width: 100%;
-  min-height: calc(100vh - 63px);
-  padding: 32px 16px 300px;
+  min-height: min(780px, calc(100svh - 59px));
+  padding: 28px 16px 190px;
   overflow: hidden;
   background: #050505;
   color: #fff;
@@ -150,8 +162,8 @@ p {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(5, 5, 5, 0.84) 0%, rgba(5, 5, 5, 0.58) 43%, rgba(5, 5, 5, 0.08) 100%),
-    linear-gradient(180deg, rgba(5, 5, 5, 0.1) 0%, rgba(5, 5, 5, 0.34) 100%);
+    linear-gradient(180deg, rgba(5, 5, 5, 0.78) 0%, rgba(5, 5, 5, 0.52) 46%, rgba(5, 5, 5, 0.82) 100%),
+    linear-gradient(90deg, rgba(5, 5, 5, 0.78) 0%, rgba(5, 5, 5, 0.36) 100%);
   clip-path: none;
   pointer-events: none;
 }
@@ -169,29 +181,29 @@ p {
 .hero-copy {
   display: grid;
   align-content: center;
-  gap: 14px;
+  gap: 12px;
   min-width: 0;
   max-width: 680px;
 }
 
 .hero-logo {
-  width: 88px;
-  height: 88px;
+  width: 74px;
+  height: 74px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
 }
 
 h1 {
-  width: 138%;
-  max-width: none;
+  width: 100%;
+  max-width: 100%;
   color: #fff;
-  font-size: clamp(38px, 9.5vw, 108px);
-  line-height: 0.84;
+  font-size: clamp(43px, 16vw, 76px);
+  line-height: 0.86;
   font-weight: 900;
   letter-spacing: 0;
   text-transform: uppercase;
-  transform: scaleX(0.72);
+  transform: none;
   transform-origin: left center;
 }
 
@@ -201,7 +213,7 @@ h1 span {
 
 .hero-subtitle {
   color: var(--blue);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -209,7 +221,7 @@ h1 span {
 
 .hero-script {
   color: #fff;
-  font-size: clamp(24px, 7vw, 40px);
+  font-size: clamp(31px, 11vw, 46px);
   font-weight: 900;
   line-height: 1.04;
   transform: rotate(-2deg);
@@ -233,20 +245,20 @@ p {
 
 .quick-actions {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
   width: 100%;
 }
 
 .quick-actions a {
   display: grid;
-  min-height: 54px;
+  min-height: 48px;
   place-items: center;
   border: 1px solid #e5e5e5;
   border-radius: 8px;
   background: #fff;
   color: #111;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 900;
 }
 
@@ -266,7 +278,7 @@ p {
   height: 100%;
   min-height: 100%;
   object-fit: cover;
-  object-position: 58% center;
+  object-position: 63% center;
 }
 
 .tube-card {
@@ -295,7 +307,7 @@ p {
 
 .ticker {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 8px;
   overflow: auto;
   padding: 12px 16px;
@@ -318,12 +330,12 @@ p {
 .info {
   display: grid;
   gap: 24px;
-  padding-top: 64px;
-  padding-bottom: 64px;
+  padding-top: 52px;
+  padding-bottom: 52px;
 }
 
 h2 {
-  font-size: clamp(34px, 8vw, 64px);
+  font-size: clamp(34px, 11vw, 58px);
   line-height: 0.9;
   font-weight: 900;
   letter-spacing: 0;
@@ -348,10 +360,9 @@ h2 {
 }
 
 .section-title {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 18px;
+  display: grid;
+  align-items: start;
+  gap: 10px;
   margin-bottom: 22px;
 }
 
@@ -363,20 +374,21 @@ h2 {
 }
 
 .section-title a {
-  flex: 0 0 auto;
+  justify-self: start;
   color: var(--red);
   font-weight: 900;
 }
 
 .specials,
 .full-menu {
-  padding-top: 26px;
-  padding-bottom: 72px;
+  padding-top: 34px;
+  padding-bottom: 58px;
 }
 
 .special-grid {
   display: grid;
-  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
 }
 
 .special-card {
@@ -387,7 +399,7 @@ h2 {
 
 .special-card img {
   width: 100%;
-  height: 158px;
+  height: 126px;
   object-fit: cover;
   background: var(--soft);
 }
@@ -395,12 +407,12 @@ h2 {
 .special-body {
   display: grid;
   gap: 8px;
-  padding: 13px;
+  padding: 11px;
   text-align: center;
 }
 
 .special-body h3 {
-  font-size: 19px;
+  font-size: 14px;
   line-height: 1.05;
   font-weight: 900;
   text-transform: uppercase;
@@ -409,7 +421,7 @@ h2 {
 .special-body p {
   display: -webkit-box;
   overflow: hidden;
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.35;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -428,7 +440,10 @@ h2 {
 
 .category-strip {
   display: flex;
-  gap: 8px;
+  gap: 7px;
+  margin-right: -16px;
+  margin-left: -16px;
+  padding: 0 16px 6px;
   overflow: auto;
   padding-bottom: 4px;
   scrollbar-width: none;
@@ -436,14 +451,14 @@ h2 {
 
 .category-strip button {
   flex: 0 0 auto;
-  min-height: 42px;
+  min-height: 40px;
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 0 14px;
   background: #fff;
   color: var(--ink);
   font: inherit;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 900;
   cursor: pointer;
 }
@@ -461,9 +476,9 @@ h2 {
 
 .menu-item {
   display: grid;
-  grid-template-columns: 112px minmax(0, 1fr);
+  grid-template-columns: 96px minmax(0, 1fr);
   gap: 0;
-  height: 148px;
+  height: 132px;
   overflow: hidden;
   padding: 0;
   border: 1px solid var(--line);
@@ -473,11 +488,11 @@ h2 {
 
 .menu-item-image {
   display: block;
-  width: 112px;
-  height: 148px;
-  min-height: 148px;
+  width: 96px;
+  height: 132px;
+  min-height: 132px;
   align-self: stretch;
-  flex: 0 0 112px;
+  flex: 0 0 96px;
   object-fit: cover;
   object-position: center;
   background:
@@ -492,14 +507,14 @@ h2 {
   grid-template-rows: 1fr auto;
   gap: 6px;
   min-width: 0;
-  padding: 12px;
+  padding: 10px;
 }
 
 .menu-category {
   display: block;
   margin-bottom: 5px;
   color: var(--red);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 900;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -509,7 +524,7 @@ h2 {
   display: -webkit-box;
   overflow: hidden;
   margin-bottom: 5px;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 900;
   line-height: 1.12;
   text-transform: uppercase;
@@ -519,7 +534,7 @@ h2 {
 
 .menu-item p,
 .menu-loading {
-  font-size: 13px;
+  font-size: 12px;
   line-height: 1.35;
 }
 
@@ -536,10 +551,10 @@ h2 {
 
 .blue-band {
   position: relative;
-  width: min(1160px, calc(100% - 32px));
+  width: 100%;
   margin: 0 auto;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 0;
   background: #071020;
   color: #fff;
   box-shadow: var(--shadow);
@@ -566,8 +581,8 @@ h2 {
   z-index: 1;
   display: grid;
   gap: 24px;
-  padding-top: 36px;
-  padding-bottom: 36px;
+  padding-top: 44px;
+  padding-bottom: 44px;
 }
 
 .blue-band p {
@@ -590,8 +605,8 @@ h2 {
 .reservation {
   width: 100%;
   max-width: none;
-  padding-right: max(16px, calc((100vw - 1160px) / 2));
-  padding-left: max(16px, calc((100vw - 1160px) / 2));
+  padding-right: 16px;
+  padding-left: 16px;
   background:
     radial-gradient(circle at 12% 22%, rgba(239, 32, 40, 0.18), transparent 30%),
     #050505;
@@ -629,7 +644,7 @@ h2 {
 .booking-form {
   display: grid;
   gap: 14px;
-  padding: 18px;
+  padding: 14px;
   border-color: rgba(255, 255, 255, 0.22);
   background: transparent;
   box-shadow: var(--shadow);
@@ -655,7 +670,7 @@ input,
 select,
 textarea {
   width: 100%;
-  min-height: 48px;
+  min-height: 50px;
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 8px;
   padding: 12px;
@@ -699,8 +714,8 @@ textarea {
 }
 
 .social {
-  padding-top: 60px;
-  padding-bottom: 68px;
+  padding-top: 52px;
+  padding-bottom: 58px;
 }
 
 .reel-grid {
@@ -712,7 +727,7 @@ textarea {
 .reel-card {
   position: relative;
   display: grid;
-  min-height: 360px;
+  min-height: 430px;
   align-content: end;
   gap: 8px;
   overflow: hidden;
@@ -815,7 +830,7 @@ footer {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 16px;
-  padding: 28px 16px 96px;
+  padding: 28px 16px calc(92px + env(safe-area-inset-bottom));
   background: var(--ink);
   color: #fff;
   font-weight: 900;
@@ -899,18 +914,19 @@ footer a {
   left: 0;
   z-index: 30;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 0.9fr 1.2fr 0.9fr;
   border-top: 1px solid rgba(255, 255, 255, 0.22);
   background: #050505;
   box-shadow: 0 -14px 30px rgba(0, 0, 0, 0.28);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .mobile-bar a {
   display: grid;
-  min-height: 56px;
+  min-height: 58px;
   place-items: center;
   color: #fff;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -921,6 +937,48 @@ footer a {
 
 .mobile-bar a:last-child {
   background: var(--blue);
+}
+
+@media (max-width: 380px) {
+  .brand span {
+    max-width: 44vw;
+    font-size: 16px;
+  }
+
+  .site-header {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .hero {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  h1 {
+    font-size: clamp(38px, 15vw, 58px);
+  }
+
+  .hero-script {
+    font-size: clamp(27px, 10vw, 40px);
+  }
+
+  .quick-actions a {
+    font-size: 11px;
+  }
+
+  .special-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-item {
+    grid-template-columns: 88px minmax(0, 1fr);
+  }
+
+  .menu-item-image {
+    width: 88px;
+    flex-basis: 88px;
+  }
 }
 
 @media (min-width: 720px) {
@@ -936,6 +994,16 @@ footer a {
     display: inline-flex;
   }
 
+  .brand img {
+    width: 42px;
+    height: 42px;
+  }
+
+  .brand span {
+    max-width: none;
+    font-size: inherit;
+  }
+
   .reservation,
   .tube-section,
   .info {
@@ -949,10 +1017,50 @@ footer a {
     align-items: center;
   }
 
+  .hero::after {
+    background:
+      linear-gradient(90deg, rgba(5, 5, 5, 0.84) 0%, rgba(5, 5, 5, 0.58) 43%, rgba(5, 5, 5, 0.08) 100%),
+      linear-gradient(180deg, rgba(5, 5, 5, 0.1) 0%, rgba(5, 5, 5, 0.34) 100%);
+  }
+
+  .hero-logo {
+    width: 88px;
+    height: 88px;
+  }
+
   h1 {
     width: 138%;
     font-size: clamp(58px, 7.4vw, 100px);
     transform: scaleX(0.72);
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+  }
+
+  .hero-script {
+    font-size: clamp(24px, 7vw, 40px);
+  }
+
+  .hero-media img {
+    object-position: 58% center;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 18px;
+  }
+
+  .section-title a {
+    justify-self: auto;
+  }
+
+  .specials,
+  .full-menu {
+    padding-top: 26px;
+    padding-bottom: 72px;
   }
 
   .cta-row,
@@ -966,16 +1074,88 @@ footer a {
     max-width: 560px;
   }
 
+  .quick-actions a {
+    min-height: 54px;
+    font-size: 14px;
+  }
+
   .special-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .special-card img {
+    height: 158px;
+  }
+
+  .special-body {
+    padding: 13px;
+  }
+
+  .special-body h3 {
+    font-size: 19px;
+  }
+
+  .special-body p {
+    font-size: 13px;
+  }
+
+  .category-strip {
+    gap: 8px;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0 0 4px;
+  }
+
+  .category-strip button {
+    min-height: 42px;
+    font-size: 13px;
   }
 
   .menu-list {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .menu-item {
+    grid-template-columns: 112px minmax(0, 1fr);
+    height: 148px;
+  }
+
+  .menu-item-image {
+    width: 112px;
+    height: 148px;
+    min-height: 148px;
+    flex-basis: 112px;
+  }
+
+  .menu-item-content {
+    padding: 12px;
+  }
+
+  .menu-category {
+    font-size: 11px;
+  }
+
+  .menu-item strong {
+    font-size: 15px;
+  }
+
+  .menu-item p,
+  .menu-loading {
+    font-size: 13px;
+  }
+
+  .blue-band {
+    width: min(1160px, calc(100% - 56px));
+    border-radius: 8px;
+  }
+
   .form-row {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .booking-form {
+    padding: 18px;
   }
 
   .reel-grid {
