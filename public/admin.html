@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prenotazioni | Cosmopolitan</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+      body { background: #f6f7f8; }
+      main { width: min(980px, calc(100% - 32px)); margin: 0 auto; padding: 40px 0; }
+      .admin-head { display: flex; justify-content: space-between; gap: 16px; align-items: center; margin-bottom: 24px; }
+      .table-wrap { overflow: auto; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+      table { width: 100%; border-collapse: collapse; min-width: 760px; }
+      th, td { padding: 14px; border-bottom: 1px solid var(--line); text-align: left; font-size: 14px; }
+      th { background: #080808; color: #fff; font-weight: 900; }
+      td { color: #222; }
+      .empty { padding: 24px; color: var(--muted); font-weight: 800; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="admin-head">
+        <div>
+          <h1 style="font-size:42px">Prenotazioni</h1>
+          <p>Area consultazione richieste ricevute dalla landing.</p>
+        </div>
+        <a class="btn ghost" href="/">Landing</a>
+      </div>
+      <div class="table-wrap" id="adminTable">
+        <p class="empty">Caricamento...</p>
+      </div>
+    </main>
+    <script>
+      const key = new URLSearchParams(location.search).get("key") || prompt("Chiave admin");
+      const box = document.querySelector("#adminTable");
+
+      fetch(`/api/reservations?key=${encodeURIComponent(key || "")}`)
+        .then((res) => res.json().then((data) => ({ ok: res.ok, data })))
+        .then(({ ok, data }) => {
+          if (!ok || !data.ok) throw new Error((data.errors || ["Accesso non riuscito"]).join(" "));
+          if (!data.reservations.length) {
+            box.innerHTML = '<p class="empty">Nessuna prenotazione ricevuta.</p>';
+            return;
+          }
+          box.innerHTML = `
+            <table>
+              <thead>
+                <tr>
+                  <th>Ricevuta</th>
+                  <th>Nome</th>
+                  <th>Telefono</th>
+                  <th>Data</th>
+                  <th>Ora</th>
+                  <th>Persone</th>
+                  <th>Servizio</th>
+                  <th>Note</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${data.reservations.map((item) => `
+                  <tr>
+                    <td>${new Date(item.createdAt).toLocaleString("it-IT")}</td>
+                    <td>${item.name}</td>
+                    <td><a href="tel:${item.phone}">${item.phone}</a></td>
+                    <td>${item.date}</td>
+                    <td>${item.time}</td>
+                    <td>${item.people}</td>
+                    <td>${item.service}</td>
+                    <td>${item.notes || "-"}</td>
+                  </tr>
+                `).join("")}
+              </tbody>
+            </table>
+          `;
+        })
+        .catch((error) => {
+          box.innerHTML = `<p class="empty">${error.message}</p>`;
+        });
+    </script>
+  </body>
+</html>

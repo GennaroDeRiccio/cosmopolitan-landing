@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Cosmopolitan Fusion Mexican Grill a Volla: sushi tube, tacos, burrito, burger, poke, all you can eat e take away.">
+    <title>Cosmopolitan Fusion Mexican Grill | Volla</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=netlify-static-2">
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="Cosmopolitan home">
+        <img src="/assets/logo-big.jpeg" alt="Cosmopolitan Fusion Mexican Grill">
+        <span>COSMOPOLITAN</span>
+      </a>
+      <nav class="desktop-nav" aria-label="Navigazione principale">
+        <a href="#menu">Menu</a>
+        <a href="#prenota">Prenota</a>
+        <a href="#info">Info</a>
+      </nav>
+      <a class="header-cta" href="https://cosmopolitan.orderin.it/" target="_blank" rel="noreferrer">Ordina ora</a>
+    </header>
+
+    <main id="top">
+      <section class="hero section-pad">
+        <div class="hero-copy">
+          <img class="hero-logo" src="/assets/logo-big.jpeg" alt="">
+          <h1><span>COSMOPOLITAN</span></h1>
+          <p class="hero-subtitle">Fusion Mexican Grill</p>
+          <p class="hero-script">Sushi, Tacos, Burger<br><strong>e molto di piu!</strong></p>
+          <div class="cta-row">
+            <a class="btn primary" href="https://cosmopolitan.orderin.it/" target="_blank" rel="noreferrer">Ordina ora</a>
+            <a class="btn ghost" href="#prenota">Prenota un tavolo</a>
+          </div>
+          <div class="quick-actions" aria-label="Azioni rapide">
+            <a href="tel:+390817732757">Chiama</a>
+            <a href="https://maps.google.com/?q=Via%20R.%20Sanzio%2027%20Volla%2080040" target="_blank" rel="noreferrer">Indicazioni</a>
+            <a href="https://www.instagram.com/cosmopolitanfusionmexicangrill/" target="_blank" rel="noreferrer">Instagram</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <img src="/assets/hero-fusion-campaign.png" alt="Sushi tube, burger, tacos e specialita fusion Cosmopolitan">
+        </div>
+      </section>
+
+      <section class="ticker" aria-label="Specialita">
+        <span>Tacos</span>
+        <span>Burrito</span>
+        <span>Sushi</span>
+        <span>Burger</span>
+        <span>Poke</span>
+        <span>Cake</span>
+        <span>All you can eat</span>
+      </section>
+
+      <section class="section-pad intro">
+        <div>
+          <p class="section-kicker">Le nostre specialita</p>
+          <h2>Virale per vocazione</h2>
+          <p>Un menu pensato per chi vuole provare qualcosa di diverso: tex mex, sushi roll, box da condividere, proposte vegane e special AYCE.</p>
+        </div>
+        <div class="proof-grid">
+          <article>
+            <strong>195K</strong>
+            <span>follower Instagram</span>
+          </article>
+          <article>
+            <strong>45 min</strong>
+            <span>preparazione media</span>
+          </article>
+          <article>
+            <strong>Take away</strong>
+            <span>attivo con carta</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-pad specials" id="menu">
+        <div class="section-title">
+          <h2>I piu richiesti</h2>
+          <a href="https://cosmopolitan.orderin.it/" target="_blank" rel="noreferrer">Vedi menu completo</a>
+        </div>
+        <div class="special-grid" id="featuredMenu"></div>
+      </section>
+
+      <section class="section-pad full-menu">
+        <div class="section-title">
+          <h2>Menu completo</h2>
+          <a href="https://cosmopolitan.orderin.it/" target="_blank" rel="noreferrer">Ordina su OrderIn</a>
+        </div>
+        <div class="menu-tools">
+          <input id="menuSearch" type="search" placeholder="Cerca sushi, tacos, burrito...">
+          <div class="category-strip" id="categoryStrip" aria-label="Categorie menu"></div>
+        </div>
+        <div class="menu-list" id="menuList">
+          <p class="menu-loading">Caricamento menu reale da OrderIn...</p>
+        </div>
+      </section>
+
+      <section class="blue-band">
+        <img class="ayce-bg" src="/assets/ayce-campaign-banner.png" alt="All you can eat con sushi tube, tacos, burger e roll fusion">
+        <div class="section-pad tube-section">
+          <div>
+            <h2>All you can eat Fusion Experience</h2>
+            <p>Sushi, tacos, special roll, piatti caldi, burger, poke e dolci da sogno. Il format perfetto per assaggiare tutto.</p>
+          </div>
+          <div class="tube-list">
+            <span>SUSHI TUBE 8PZ</span>
+            <span>BOX MESSICANA</span>
+            <span>BOX 36PZ SUSHI</span>
+            <span>BOX SMASH</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-pad reservation" id="prenota">
+        <div class="reservation-copy">
+          <h2>Prenota il tuo tavolo</h2>
+          <p>Il tuo posto alla tavola Fusion. Conferma immediata, nessuna caparra richiesta e richiesta salvata nel sistema prenotazioni.</p>
+          <div class="hours-card">
+            <strong>Orari take away</strong>
+            <span>Lun 17:00 - 23:30</span>
+            <span>Mar-Dom 17:00 - 23:00</span>
+          </div>
+        </div>
+        <form class="booking-form" id="bookingForm" name="prenotazioni" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="prenotazioni">
+          <p class="hidden-field">
+            <label>Non compilare questo campo <input name="bot-field"></label>
+          </p>
+          <label>
+            Nome e cognome
+            <input name="name" autocomplete="name" required placeholder="Mario Rossi">
+          </label>
+          <label>
+            Telefono
+            <input name="phone" autocomplete="tel" required inputmode="tel" placeholder="081 773 2757">
+          </label>
+          <div class="form-row">
+            <label>
+              Data
+              <input name="date" type="date" required>
+            </label>
+            <label>
+              Ora
+              <select name="time" required>
+                <option value="">Scegli</option>
+                <option>19:00</option>
+                <option>19:30</option>
+                <option>20:00</option>
+                <option>20:30</option>
+                <option>21:00</option>
+                <option>21:30</option>
+                <option>22:00</option>
+                <option>22:30</option>
+              </select>
+            </label>
+          </div>
+          <div class="form-row">
+            <label>
+              Persone
+              <input name="people" type="number" min="1" max="20" required value="2">
+            </label>
+            <label>
+              Servizio
+              <select name="service">
+                <option>Cena</option>
+                <option>Compleanno</option>
+                <option>Gruppo</option>
+                <option>Take away programmato</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            Note
+            <textarea name="notes" rows="3" placeholder="Allergie, passeggino, preferenze orario..."></textarea>
+          </label>
+          <button class="btn primary full" type="submit">Conferma prenotazione</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="section-pad social">
+        <div class="section-title">
+          <h2>Dal profilo social al tavolo.</h2>
+          <a href="https://www.instagram.com/cosmopolitanfusionmexicangrill/" target="_blank" rel="noreferrer">@cosmopolitanfusionmexicangrill</a>
+        </div>
+        <div class="reel-grid" aria-hidden="true">
+          <div>Sushi in tubo</div>
+          <div>All you can eat</div>
+          <div>Bocadillo</div>
+          <div>Poke</div>
+        </div>
+      </section>
+
+      <section class="section-pad info" id="info">
+        <div>
+          <h2>Vieni a trovarci.</h2>
+          <p>Via R. Sanzio 27, Volla 80040 (NA)</p>
+        </div>
+        <div class="info-actions">
+          <a class="btn primary" href="tel:+390817732757">081 773 2757</a>
+          <a class="btn ghost" href="https://maps.google.com/?q=Via%20R.%20Sanzio%2027%20Volla%2080040" target="_blank" rel="noreferrer">Apri mappa</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>COSMOPOLITAN FUSION MEXICAN GRILL</span>
+      <a href="https://cosmopolitan.orderin.it/" target="_blank" rel="noreferrer">Ordina da OrderIn</a>
+    </footer>
+
+    <div class="mobile-bar" aria-label="Azioni principali">
+      <a href="tel:+390817732757">Chiama</a>
+      <a class="order" href="https://cosmopolitan.orderin.it/" target="_blank" rel="noreferrer">Ordina</a>
+      <a href="#prenota">Prenota</a>
+    </div>
+
+    <script src="/script.js?v=netlify-static-2" type="module"></script>
+  </body>
+</html>
