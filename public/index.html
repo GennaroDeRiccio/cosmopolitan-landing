@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=netlify-static-3">
+    <link rel="stylesheet" href="/styles.css?v=netlify-static-4">
   </head>
   <body>
     <header class="site-header" data-header>
@@ -21,7 +21,7 @@
         <a href="#prenota">Prenota</a>
         <a href="#info">Info</a>
       </nav>
-      <a class="header-cta" href="https://cosmopolitan.orderin.it/" target="_blank" rel="noreferrer">Ordina ora</a>
+      <a class="header-cta" href="#prenota">Prenota</a>
     </header>
 
     <main id="top">
@@ -32,8 +32,7 @@
           <p class="hero-subtitle">Fusion Mexican Grill</p>
           <p class="hero-script">Sushi, Tacos, Burger<br><strong>e molto di piu!</strong></p>
           <div class="cta-row">
-            <a class="btn primary" href="https://cosmopolitan.orderin.it/" target="_blank" rel="noreferrer">Ordina ora</a>
-            <a class="btn ghost" href="#prenota">Prenota un tavolo</a>
+            <a class="btn primary" href="#prenota">Prenota un tavolo</a>
           </div>
           <div class="quick-actions" aria-label="Azioni rapide">
             <a href="tel:+390817732757">Chiama</a>
@@ -59,7 +58,7 @@
       <section class="section-pad specials" id="menu">
         <div class="section-title">
           <h2>I piu richiesti</h2>
-          <a href="https://cosmopolitan.orderin.it/" target="_blank" rel="noreferrer">Vedi menu completo</a>
+          <a href="#prenota">Prenota</a>
         </div>
         <div class="special-grid" id="featuredMenu"></div>
       </section>
@@ -67,14 +66,14 @@
       <section class="section-pad full-menu">
         <div class="section-title">
           <h2>Menu completo</h2>
-          <a href="https://cosmopolitan.orderin.it/" target="_blank" rel="noreferrer">Ordina su OrderIn</a>
+          <a href="#prenota">Prenota un tavolo</a>
         </div>
         <div class="menu-tools">
           <input id="menuSearch" type="search" placeholder="Cerca sushi, tacos, burrito...">
           <div class="category-strip" id="categoryStrip" aria-label="Categorie menu"></div>
         </div>
         <div class="menu-list" id="menuList">
-          <p class="menu-loading">Caricamento menu reale da OrderIn...</p>
+          <p class="menu-loading">Caricamento menu...</p>
         </div>
       </section>
 
@@ -104,7 +103,7 @@
             <span>Mar-Dom 17:00 - 23:00</span>
           </div>
         </div>
-        <form class="booking-form" id="bookingForm" name="prenotazioni" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <form class="booking-form" id="bookingForm" name="prenotazioni" method="POST" action="/success.html" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="prenotazioni">
           <p class="hidden-field">
             <label>Non compilare questo campo <input name="bot-field"></label>
@@ -208,10 +207,10 @@
 
     <div class="mobile-bar" aria-label="Azioni principali">
       <a href="tel:+390817732757">Chiama</a>
-      <a class="order" href="https://cosmopolitan.orderin.it/" target="_blank" rel="noreferrer">Ordina</a>
+      <a class="order" href="#prenota">Prenota</a>
       <a href="#prenota">Prenota</a>
     </div>
 
-    <script src="/script.js?v=netlify-static-3" type="module"></script>
+    <script src="/script.js?v=netlify-static-4" type="module"></script>
   </body>
 </html>

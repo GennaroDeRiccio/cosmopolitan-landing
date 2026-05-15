@@ -1,4 +1,3 @@
-const orderUrl = "https://cosmopolitan.orderin.it/";
 const productImgBase = "https://cosmopolitan.orderin.it/data/026101/images/products/";
 const productFallbackImage = "/assets/logo-big.jpeg";
 
@@ -148,7 +147,7 @@ async function loadFullMenu() {
     renderCategoryStrip();
     renderFullMenu();
   } catch (error) {
-    menuList.innerHTML = `<p class="menu-loading">${error.message}. Puoi comunque aprire il menu completo da OrderIn.</p>`;
+    menuList.innerHTML = `<p class="menu-loading">${error.message}. Riprova tra qualche minuto.</p>`;
   }
 }
 
