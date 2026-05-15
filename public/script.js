@@ -119,11 +119,9 @@ function renderFullMenu() {
       <article class="menu-item">
         <img class="menu-item-image" src="${productImage(item)}" alt="${item.art_descrizione1 || "Prodotto"}" decoding="async" onerror="this.src='${productFallbackImage}'">
         <div class="menu-item-content">
-          <div>
-            <span class="menu-category">${categoryName(item.art_tipo)}</span>
-            <strong>${item.art_descrizione1 || "Prodotto"}</strong>
-            <p>${item.art_componenti || categoryName(item.art_tipo)}</p>
-          </div>
+          <span class="menu-category">${categoryName(item.art_tipo)}</span>
+          <strong>${item.art_descrizione1 || "Prodotto"}</strong>
+          <p>${item.art_componenti || categoryName(item.art_tipo)}</p>
           <span class="price">${Number(item.price || 0).toLocaleString("it-IT", { style: "currency", currency: "EUR" })}</span>
         </div>
       </article>
