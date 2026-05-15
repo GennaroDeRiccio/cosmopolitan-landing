@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=netlify-static-2">
+    <link rel="stylesheet" href="/styles.css?v=netlify-static-3">
   </head>
   <body>
     <header class="site-header" data-header>
@@ -54,28 +54,6 @@
         <span>Poke</span>
         <span>Cake</span>
         <span>All you can eat</span>
-      </section>
-
-      <section class="section-pad intro">
-        <div>
-          <p class="section-kicker">Le nostre specialita</p>
-          <h2>Virale per vocazione</h2>
-          <p>Un menu pensato per chi vuole provare qualcosa di diverso: tex mex, sushi roll, box da condividere, proposte vegane e special AYCE.</p>
-        </div>
-        <div class="proof-grid">
-          <article>
-            <strong>195K</strong>
-            <span>follower Instagram</span>
-          </article>
-          <article>
-            <strong>45 min</strong>
-            <span>preparazione media</span>
-          </article>
-          <article>
-            <strong>Take away</strong>
-            <span>attivo con carta</span>
-          </article>
-        </div>
       </section>
 
       <section class="section-pad specials" id="menu">
@@ -126,7 +104,7 @@
             <span>Mar-Dom 17:00 - 23:00</span>
           </div>
         </div>
-        <form class="booking-form" id="bookingForm" name="prenotazioni" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <form class="booking-form" id="bookingForm" name="prenotazioni" method="POST" action="/success.html" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="prenotazioni">
           <p class="hidden-field">
             <label>Non compilare questo campo <input name="bot-field"></label>
@@ -188,11 +166,27 @@
           <h2>Dal profilo social al tavolo.</h2>
           <a href="https://www.instagram.com/cosmopolitanfusionmexicangrill/" target="_blank" rel="noreferrer">@cosmopolitanfusionmexicangrill</a>
         </div>
-        <div class="reel-grid" aria-hidden="true">
-          <div>Sushi in tubo</div>
-          <div>All you can eat</div>
-          <div>Bocadillo</div>
-          <div>Poke</div>
+        <div class="reel-grid" aria-label="Anteprime contenuti social">
+          <article class="reel-card reel-tube">
+            <span class="play-badge" aria-hidden="true"></span>
+            <strong>SUSHI IN TUBO</strong>
+            <p>Il formato piu virale del profilo, servito in versione Cosmo.</p>
+          </article>
+          <article class="reel-card reel-ayce">
+            <span class="play-badge" aria-hidden="true"></span>
+            <strong>ALL YOU CAN EAT</strong>
+            <p>Una carrellata fusion tra sushi, tacos, burger e special roll.</p>
+          </article>
+          <article class="reel-card reel-burger">
+            <span class="play-badge" aria-hidden="true"></span>
+            <strong>BURGER & BACON</strong>
+            <p>Close-up stile reel: cheddar, bacon croccante e salsa che cola.</p>
+          </article>
+          <article class="reel-card reel-poke">
+            <span class="play-badge" aria-hidden="true"></span>
+            <strong>POKE COLOR</strong>
+            <p>Tagli freschi, topping croccanti e vibe super social.</p>
+          </article>
         </div>
       </section>
 
@@ -210,7 +204,6 @@
 
     <footer>
       <span>COSMOPOLITAN FUSION MEXICAN GRILL</span>
-      <a href="https://cosmopolitan.orderin.it/" target="_blank" rel="noreferrer">Ordina da OrderIn</a>
     </footer>
 
     <div class="mobile-bar" aria-label="Azioni principali">
@@ -219,6 +212,6 @@
       <a href="#prenota">Prenota</a>
     </div>
 
-    <script src="/script.js?v=netlify-static-2" type="module"></script>
+    <script src="/script.js?v=netlify-static-3" type="module"></script>
   </body>
 </html>

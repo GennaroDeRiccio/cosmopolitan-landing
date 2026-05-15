@@ -191,6 +191,27 @@ form?.addEventListener("submit", async (event) => {
   payload.people = Number(payload.people);
 
   try {
+    const saved = {
+      ...payload,
+      createdAt: new Date().toISOString()
+    };
+    const isLocalPreview = ["127.0.0.1", "localhost", ""].includes(window.location.hostname);
+
+    if (isLocalPreview) {
+      const localReservations = JSON.parse(localStorage.getItem("cosmoPreviewReservations") || "[]");
+      localReservations.unshift(saved);
+      localStorage.setItem("cosmoPreviewReservations", JSON.stringify(localReservations.slice(0, 20)));
+      localStorage.setItem("lastCosmoReservation", JSON.stringify(saved));
+      setStatus(`Anteprima ok. ${bookingSummary(saved)} Su Netlify verra salvata in Forms > prenotazioni.`, "ok");
+      form.reset();
+      if (dateInput) {
+        const today = new Date();
+        today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+        dateInput.value = today.toISOString().slice(0, 10);
+      }
+      return;
+    }
+
     const encodedPayload = new URLSearchParams({
       "form-name": form.getAttribute("name") || "prenotazioni",
       ...payload,
@@ -205,10 +226,6 @@ form?.addEventListener("submit", async (event) => {
 
     if (!response.ok) throw new Error("Non sono riuscito a registrare la prenotazione.");
 
-    const saved = {
-      ...payload,
-      createdAt: new Date().toISOString()
-    };
     localStorage.setItem("lastCosmoReservation", JSON.stringify(saved));
     setStatus(`Richiesta inviata. ${bookingSummary(saved)} Ti ricontatteremo per conferma.`, "ok");
     form.reset();

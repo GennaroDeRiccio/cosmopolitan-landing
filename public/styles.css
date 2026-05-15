@@ -314,17 +314,12 @@ p {
   text-transform: uppercase;
 }
 
-.intro,
 .reservation,
 .info {
   display: grid;
   gap: 24px;
   padding-top: 64px;
   padding-bottom: 64px;
-}
-
-.intro {
-  text-align: center;
 }
 
 h2 {
@@ -344,37 +339,12 @@ h2 {
   text-transform: uppercase;
 }
 
-.proof-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-}
-
-.proof-grid article,
 .special-card,
 .hours-card,
 .booking-form {
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #fff;
-}
-
-.proof-grid article {
-  display: grid;
-  gap: 4px;
-  padding: 14px;
-}
-
-.proof-grid strong {
-  color: var(--red);
-  font-size: 20px;
-  font-weight: 900;
-}
-
-.proof-grid span {
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 800;
 }
 
 .section-title {
@@ -735,40 +705,100 @@ textarea {
 
 .reel-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
+  grid-template-columns: 1fr;
+  gap: 12px;
 }
 
-.reel-grid div {
-  display: flex;
-  min-height: 180px;
-  align-items: end;
-  padding: 14px;
+.reel-card {
+  position: relative;
+  display: grid;
+  min-height: 360px;
+  align-content: end;
+  gap: 8px;
+  overflow: hidden;
+  padding: 18px;
   border-radius: 8px;
   color: #fff;
   background:
-    linear-gradient(180deg, transparent 25%, rgba(0, 0, 0, 0.72)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.02) 18%, rgba(0, 0, 0, 0.82) 100%),
     var(--red);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+  isolation: isolate;
+}
+
+.reel-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-position: center;
+  background-size: cover;
+  transform: scale(1.02);
+}
+
+.reel-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 34%, rgba(0, 0, 0, 0.86) 100%),
+    radial-gradient(circle at 18% 18%, rgba(239, 32, 40, 0.34), transparent 32%);
+}
+
+.reel-card strong {
+  max-width: 14ch;
+  font-size: 26px;
+  line-height: 0.94;
   font-weight: 900;
   text-transform: uppercase;
 }
 
-.reel-grid div:nth-child(2) {
-  background:
-    linear-gradient(180deg, transparent 25%, rgba(0, 0, 0, 0.72)),
-    var(--blue);
+.reel-card p {
+  max-width: 28ch;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 13px;
+  line-height: 1.32;
 }
 
-.reel-grid div:nth-child(3) {
-  background:
-    linear-gradient(180deg, transparent 25%, rgba(0, 0, 0, 0.72)),
-    #111;
+.play-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.24);
 }
 
-.reel-grid div:nth-child(4) {
-  background:
-    linear-gradient(180deg, transparent 25%, rgba(0, 0, 0, 0.72)),
-    var(--yellow);
+.play-badge::before {
+  content: "";
+  width: 0;
+  height: 0;
+  margin-left: 3px;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid var(--red);
+}
+
+.reel-tube::before {
+  background-image: url("https://cosmopolitan.orderin.it/data/026101/images/products/SAN54026101.jpeg?date=2025-07-16%2019%3A53%3A04");
+}
+
+.reel-ayce::before {
+  background-image: url("/assets/ayce-campaign-banner.png");
+  background-position: center;
+}
+
+.reel-burger::before {
+  background-image: url("https://cosmopolitan.orderin.it/data/026101/images/products/SAN51026101.jpg");
+}
+
+.reel-poke::before {
+  background-image: url("https://cosmopolitan.orderin.it/data/026101/images/products/POKE08026101.jpg");
 }
 
 .info {
@@ -793,6 +823,37 @@ footer {
 
 footer a {
   color: var(--yellow);
+}
+
+.success-page {
+  display: grid;
+  min-height: 100vh;
+  align-content: center;
+  justify-items: start;
+  gap: 20px;
+  padding: 32px max(16px, calc((100vw - 900px) / 2));
+  background:
+    linear-gradient(90deg, rgba(5, 5, 5, 0.88), rgba(5, 5, 5, 0.54)),
+    url("/assets/hero-fusion-campaign.png") center / cover;
+  color: #fff;
+}
+
+.success-page img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.success-page h1 {
+  width: auto;
+  max-width: 780px;
+  transform: none;
+}
+
+.success-page p {
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .mobile-bar {
@@ -868,15 +929,6 @@ footer a {
     max-width: 560px;
   }
 
-  .intro {
-    grid-template-columns: 1fr;
-  }
-
-  .proof-grid {
-    max-width: 720px;
-    margin: 0 auto;
-  }
-
   .special-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -891,6 +943,10 @@ footer a {
 
   .reel-grid {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .reel-card {
+    min-height: 320px;
   }
 
   .mobile-bar {
